@@ -59,14 +59,6 @@ int turn(int direction) {
   return heading;;
 }
 
-bool startDrawing() {
-  return true;
-}
-
-bool stopDrawing() {
-  return false;
-}
-
 void move(int steps) {
   int startCoords[2] = { turtle[0], turtle[1] };
 
