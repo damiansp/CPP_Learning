@@ -11,13 +11,13 @@ int grid[dim][dim] = {0};   /* drawing area: 0 = blank; 1 = drawn on */
 bool isDrawing = false;     /* draw if true */
 
 
-void showGrid(int grid[dim][dim], int gridDim, int heading) {
+void showGrid() {
   char turtlePlot = '>';
   
   // Loop over rows
-  for (int i = 0; i < gridDim; i++) {
+  for (int i = 0; i < dim; i++) {
     // ...and over cols
-    for (int j = 0; j < gridDim; j++) {
+    for (int j = 0; j < dim; j++) {
       // Use a ">", etc to show the turtle's location and heading
       if (i == turtle[0] && j == turtle[1]) {
         switch (heading) {
@@ -38,7 +38,7 @@ void showGrid(int grid[dim][dim], int gridDim, int heading) {
           break;
         }
 
-        cout << turtlePlot;
+        cout << turtlePlot << ' ';
       } else {
         cout << (grid[i][j] ? "* " : "  ");
       }
@@ -47,7 +47,7 @@ void showGrid(int grid[dim][dim], int gridDim, int heading) {
   }
 }
 
-int turn(int direction, int heading) {
+int turn(int direction) {
   if (direction == 0) { /* turn left */
     heading = (--heading < 0 ? 3 : heading);
   } else if (direction == 1) { /* turn right */
@@ -67,7 +67,7 @@ bool stopDrawing() {
   return false;
 }
 
-void move(int steps, int heading, bool isDrawing) {
+void move(int steps) {
   int startCoords[2] = { turtle[0], turtle[1] };
 
   switch (heading) {
@@ -125,22 +125,63 @@ void move(int steps, int heading, bool isDrawing) {
   }
 }
 
+int prompt() {
+  int decision = 0;
+  cout << "Enter the next command:\n"
+       << "1: Start Drawing\n"
+       << "2: Stop Drawing\n"
+       << "3: Turn Left\n"
+       << "4: Turn Right\n"
+       << "5: Move Forward\n"
+       << "6: Show Grid\n"
+       << "9: Quit: ";
+  cin >> decision;
+
+  return decision;
+}
+
+void executeCommand(int direction) {
+  int steps = 0;
+
+  switch (direction) {
+  case 1:
+    isDrawing = true;
+    break;
+  case 2:
+    isDrawing = false;
+    break;
+  case 3:
+    turn(0);
+    break;
+  case 4:
+    turn(1);
+    break;
+  case 5:
+    cout << "How many steps? ";
+    cin >> steps;
+    move(steps);
+    break;
+  case 6:
+    showGrid();
+    break;
+  default:
+    cout << "Bad command\n";
+    prompt();
+    break;
+  }
+}
+
 
 int main() {
-  showGrid(grid, dim, heading);
-  move(5, heading, true);
-  showGrid(grid, dim, heading);
+  int direction;
   
-  heading = turn(1, heading); /* turn right */
-  showGrid(grid, dim, heading);
-  
-  move(5, heading, true);
-  heading = turn(0, heading); /* turn left*/
-  showGrid(grid, dim, heading);
+  cout << "Welcome to the drawing program.\n";
+  direction = prompt();
 
-  move(7, heading, true);
-  heading = turn(1, heading); /* turn right */
-  showGrid(grid, dim, heading);
-  
+  while (direction != 9) {
+    executeCommand(direction);
+    direction = prompt();
+  }
+    
   return 0;
 }
