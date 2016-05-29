@@ -82,6 +82,51 @@ bool hasNOfAKind(const int n, const int hand[5][2]) {
   return false;
 }
 
+int has2pairsOrFullHouse(const int hand[5][2]) {
+  // Count the unique values: if 2 -> full house; if 3 -> 2 pairs
+  int val;
+  int values[5] = { -1, -1, -1, -1, -1 };
+  int uniqueVals = 0;
+  bool found = false;
+
+  // loop through each card in the hand
+  for (int card = 0; card < 5; card++) {
+    val = hand[card][0];
+    // loop through values from start to current position.
+    // If current value not found, add to current position, else leave as -1
+    for (int v = 0; v <= card; v++) {
+      if (values[v] == val) {
+        found = true;
+      }
+    }
+
+    if (!found) {
+      values[card] = val;
+      // Reset found
+      found = false;
+    }
+  }
+
+  // Loop through values and sum all != -1
+  for (int v = 0; v < 5; v++) {
+    if (values[v] != -1) {
+      uniqueVals++;
+    }
+  }
+
+  if (uniqueVals == 2) {
+    cout << "Hand has a full house";
+    return 23;
+  }
+
+  if (uniqueVals == 3) {
+    cout << "Hand has two pairs";
+    return 22;
+  }
+  
+  return -1;
+}
+
 bool hasFlush(int hand[5][2]) {
   int suit = hand[0][1];
 
@@ -140,9 +185,12 @@ int main() {
   int nTries = 10000,
     nStraight = 0,
     nFlush = 0,
+    nFullHouse = 0,
+    nTwoPair = 0,
     n4 = 0,
     n3 = 0,
-    n2 = 0;
+    n2 = 0,
+    uniqueVals;
 
   srand(time(0));
 
@@ -173,6 +221,14 @@ int main() {
       nStraight++;
     }
 
+    uniqueVals = has2pairsOrFullHouse(hand);
+    if (uniqueVals == 22) {
+      nTwoPair++;
+    } else if (uniqueVals == 23) {
+      nFullHouse++;
+    }
+
+    
     // reset deck
     for (int s = 0; s < 4; s++) {
       for (int v = 0; v < 13; v++) {
@@ -181,9 +237,11 @@ int main() {
     }
   }
 
-  cout << "After " << nTries << " hands were dealt, there were:\n"
+  cout << "\n\nAfter " << nTries << " hands were dealt, there were:\n"
        << nFlush << " flushes\n"
        << nStraight << " straights\n"
+       << nFullHouse << " full houses\n"
+       << nTwoPair << " two pairs\n"
        << n4 << " four of a kinds\n"
        << n3 << " three of a kinds\n"
        << n2 << " two of a kinds\n\n";
