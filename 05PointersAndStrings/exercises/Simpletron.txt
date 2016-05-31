@@ -1,0 +1,147 @@
+10 const int READ       read input into specified memory location
+11 const int WRITE      write word in memory to screen
+20 const int LOAD       load word from mem loc to accumulator
+21 const int STORE      store word from accumulator into mem loc
+30 const int ADD        add from mem loc to accumulator
+31 const int SUBTRACT   subtract mem loc from accumulator
+32 const int DIVIDE
+33 const int MULTIPLY
+40 const int BRANCH     branch to spec loc in mem
+41 const int BRANCHNEG  branch to spec loc in mem if accumulator is neg
+42 const int BRANCHZERO branch to spec loc in mem if accumulator is 0
+43 const int HALT       halt--program completed
+
+(a) Sum a stream; stop on negative input
+Requires memory for:
+SUM
+NUMBER // next input
+
+00 read number
+01 load number
+02 negative?
+YES
+03 halt
+NO
+04 read number
+05 load number
+06 negative?
+YES
+07 load sum
+08 write sum
+09 halt
+NO
+10 load sum
+11 add number
+12 store sum
+13 read number
+14 load number
+15 negative?
+YES
+16 negbranch 07
+NO
+17 branch 10
+
+98 NUMBER
+99 SUM
+
+
+(b) Counter controlled loop: Add 7 digits; compute average
+Memory for:
+N
+TOTAL
+NUMBER
+COUNTER
+
+00 read number (N: number of inputs = 7)
+01 read number (COUNTER: keep track of inputs = 0)
+02 read number (TOTAL: initialize = 0)
+
+Check if COUNTER < N
+03 load N
+04 subtract COUNTER
+
+zero?
+YES
+05 branchzero
+Get TOTAL / N and return
+06 load TOTAL
+07 divide N
+08 store AVG
+09 write AVG
+10 halt
+
+NO
+11 branch
+12 read NUMBER
+13 load NUMBER
+14 add TOTAL
+15 store TOTAL
+16 load N
+17 subtract COUNTER
+
+zero?
+YES
+18 branchzero 05
+
+NO
+19 branch 11
+
+96 AVG
+97 TOTAL
+98 COUNTER
+99 N
+
+
+
+
+(c) Read a series of numbers and print the largest; the first number passed
+    should be the number of numbers
+
+Memory for:
+N Number of numbers = A
+COUNTER = 0
+NUMBER // next input
+MAX
+INCR  // counter incr
+
+00 read N
+01 read COUNTER = 0
+02 read NUMBER
+03 load NUMBER
+04 store MAX
+05 read INCR = 1
+05 load COUNTER
+06 add INCR
+07 store COUNTER
+
+Check if N numbers reached yet
+07 load N
+08 subtract COUNTER
+
+Zero?
+YES
+09 branchzero 10
+10 load MAX
+11 write MAX
+12 halt
+
+NO
+13 branch 14
+14 read NUMBER
+
+Bigger than MAX?
+15 load MAX
+16 subtract NUMBER
+
+Negative?
+YES
+17 branchneg 18
+18 store MAX
+
+NO
+19 branch 20
+20 branch 05
+
+
+
+
