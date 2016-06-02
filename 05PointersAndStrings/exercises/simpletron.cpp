@@ -9,8 +9,10 @@ using std::setw;
 using std::ios;
 
 long accumulator = 0;
-int memory[100] = {0};
-
+const int MEMORY_SIZE = 100;
+int memory[MEMORY_SIZE] = {0};
+int counter = 0,
+  instruction = 0;
 
 void read(int input, int mem) {
   /* Read an input instruction to the next spot in memory */
@@ -86,6 +88,37 @@ void showMenu(void) {
   }
 }
 
+void showStatus(int operation, int operand) {
+  cout << "REGISTERS:" << endl;
+  printf("accumulator %04ld\n", accumulator);
+  printf("counter     %02d\n", counter);
+  printf("instruction %04d\n", instruction);
+  printf("operation   %02d\n", operation);
+  printf("operand     %02d\n\n", operand);
+
+  cout << "MEMORY:" << endl;
+  // print header
+  cout << "  "; /* indent for side-headers */
+  for (int i = 0; i < 10; i++) {
+    printf("%5d", i);
+  }
+
+  // print contents of memory
+  for (int i = 0; i < MEMORY_SIZE; i++) {
+    // every 10th value starts a new row; print row header
+    if (i % 10 == 0) {
+      printf("\n%2d %04d", i, memory[i]);
+    } else {
+      printf(" %04d", memory[i]);
+    }
+  }
+
+  cout << endl << endl;
+}
+
+
+
+
 
 int main() {
   int instructionNumber = 0;
@@ -118,7 +151,8 @@ int main() {
   
 
   // Program entry completed
-  
+  showStatus(0, 0);
+    
   return 0;
 }
 
