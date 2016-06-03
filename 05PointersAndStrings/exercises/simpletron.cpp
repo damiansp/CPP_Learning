@@ -121,8 +121,9 @@ void showStatus(int operation, int operand) {
 
 
 int main() {
-  int instructionNumber = 0;
-  long instruction = 0;
+  int instructionNumber = 0,
+    operation,
+    operand;
   char cont = 'x';
   
   cout << endl << endl << endl << endl
@@ -146,13 +147,14 @@ int main() {
   }
 
   while(instruction != -9999) {
-    ;
+    operation = instruction / 100;
+    operand = instruction % 100;
+    memory[instructionNumber++] = instruction;
+    showStatus(operation, operand);
+    printf("%02d ? ", instructionNumber);
+    cin >> instruction;
   }
   
-
-  // Program entry completed
-  showStatus(0, 0);
-    
   return 0;
 }
 
