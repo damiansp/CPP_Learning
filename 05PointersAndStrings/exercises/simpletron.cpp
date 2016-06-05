@@ -117,10 +117,7 @@ void showStatus(int operation, int operand) {
 }
 
 
-
-
-
-int main() {
+void readProgram(void) {
   int instructionNumber = 0,
     operation,
     operand;
@@ -154,8 +151,14 @@ int main() {
     printf("%02d ? ", instructionNumber);
     cin >> instruction;
   }
+}
+
+
+
+
+int main() {
+  readProgram();
   
   return 0;
 }
-
 
