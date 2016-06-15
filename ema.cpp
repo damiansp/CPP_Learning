@@ -19,7 +19,7 @@ using std::cout;
     @return an array of moving averages for indices window ~ n
         (indices 0 ~ window cannot be computed; assigned NULL)
 */
-double* ema(double x[], const int n, const int window, double lambda) {
+void ema(double x[], const int n, const int window, double lambda) {
   int i;
   double movingAvg[n];
   double weights[window];
@@ -68,14 +68,14 @@ double* ema(double x[], const int n, const int window, double lambda) {
     oldest = x[i];
   }
 
-  // TEST
+  // Output results
   cout << "\n\nMoving Averages:\n";
   for (i = 0; i < n; i++) {
     printf("%.2f\t", movingAvg[i]);
   }
 
-  
-  return movingAvg;
+  // Change return type and update to return array
+  // return movingAvg;
 }
 
 
@@ -88,7 +88,6 @@ int main() {
   double x[DATA_POINTS] = { 6, 6, 6, 6, 5, 4, 3, 2, 1, 0 };
   double randN;
   int direction;
-  double *emaP;
 
   // Seed random number generator
   // srand(time(0));
@@ -115,16 +114,8 @@ int main() {
     printf("%.4f\t", x[i]);
   }
 
-  emaP = ema(x, DATA_POINTS, 3, 0.5);
+  ema(x, DATA_POINTS, 3, 0.5);
 
-  
-  // TEST: emaP output
-  cout << "\n\nEMA:\n";
-  for (int i = 0; i < DATA_POINTS; i++) {
-    printf("%.2f\t", emaP[i]);
-  }
-  
-  
   printf("\n");
   
   return 0;
