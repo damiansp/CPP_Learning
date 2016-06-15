@@ -84,18 +84,18 @@ void ema(double x[], const int n, const int window, double lambda) {
 
 
 int main() {
-  const int DATA_POINTS = 10;
-  double x[DATA_POINTS] = { 6, 6, 6, 6, 5, 4, 3, 2, 1, 0 };
+  const int DATA_POINTS = 100;
+  //double x[DATA_POINTS] = { 6, 6, 6, 6, 5, 4, 3, 2, 1, 0 };
+  double x[DATA_POINTS] = {0};
   double randN;
   int direction;
 
   // Seed random number generator
-  // srand(time(0));
+  srand(time(0));
 
   
   
   // Create artificial data for x, modeled as a random walk
-  /*
   x[0] = 1.0;
 
   for (int i = 1; i <= DATA_POINTS; i++) {
@@ -106,7 +106,7 @@ int main() {
     //    printf("%.4f  ", randN);
     x[i] = x[i - 1] + direction * randN;
   }
-  */
+  
 
   // TEST: Output x
   cout << "\n\nx:\n";
@@ -114,7 +114,7 @@ int main() {
     printf("%.4f\t", x[i]);
   }
 
-  ema(x, DATA_POINTS, 3, 0.5);
+  ema(x, DATA_POINTS, 10, 0.95);
 
   printf("\n");
   
