@@ -19,7 +19,7 @@ using std::cout;
     @return an array of moving averages for indices window ~ n
         (indices 0 ~ window cannot be computed; assigned NULL)
 */
-void ema(double x[], const int n, const int window, double lambda) {
+void ema(const double x[], const int n, const int window, const double lambda) {
   int i;
   double movingAvg[n];
   double weights[window];
@@ -30,10 +30,10 @@ void ema(double x[], const int n, const int window, double lambda) {
   
   weights[window] = 1;
 
-  // set movingAvg values with indices < window to NULL
+  // set movingAvg values with indices < window to nan
   /*
   for (i = 0; i < window; i++) {
-    movingAvg[i] = NULL;
+    movingAvg[i] = nan;
   }
   */
   
