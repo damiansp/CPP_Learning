@@ -30,13 +30,6 @@ void ema(const double x[], const int n, const int window, const double lambda) {
   
   weights[window] = 1;
 
-  // set movingAvg values with indices < window to nan
-  /*
-  for (i = 0; i < window; i++) {
-    movingAvg[i] = nan;
-  }
-  */
-  
   // Set weights as an exponential decaying series
   for (i = window - 1; i > 0; i--) {
     weights[i] = weights[i + 1] * lambda;
@@ -68,6 +61,13 @@ void ema(const double x[], const int n, const int window, const double lambda) {
     oldest = x[i];
   }
 
+  // set movingAvg values with indices < window to sentinel value of -1
+  // NOTE: This assumes all values in x are non-negative; if not the case another
+  // value should be reserved;
+  for (i = 0; i < window; i++) {
+    movingAvg[i] = -1;
+  }
+  
   // Output results
   cout << "\n\nMoving Averages:\n";
   for (i = 0; i < n; i++) {
