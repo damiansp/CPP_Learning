@@ -61,11 +61,9 @@ void ema(const double x[], const int n, const int window, const double lambda) {
     oldest = x[i];
   }
 
-  // set movingAvg values with indices < window to sentinel value of -1
-  // NOTE: This assumes all values in x are non-negative; if not the case another
-  // value should be reserved;
+  // set movingAvg values with indices < window to nan (not a number)
   for (i = 0; i < window; i++) {
-    movingAvg[i] = -1;
+    movingAvg[i] = nan("");
   }
   
   // Output results
