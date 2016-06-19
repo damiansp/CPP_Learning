@@ -18,7 +18,7 @@ int Employee::getCount() { return count; }
 // Constructor
 Employee::Employee(const char *first, const char *last) {
   firstName = new char[strlen(first) + 1];
-  assert(firstName != 0); // ensure mem allocated
+  assert(firstName != 0); // ensure mem allocated; throws error if false
   strcpy(firstName, first);
 
   lastName = new char[strlen(last) + 1];
@@ -27,7 +27,7 @@ Employee::Employee(const char *first, const char *last) {
 
   ++count;
   cout << "Employee constructor for " << firstName << ' ' << lastName
-       << "called.\n";
+       << " called.\n";
 }
 
 // Destructor recovers memory
