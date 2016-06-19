@@ -16,6 +16,7 @@ using std::cout;
     @param window: number of days over which to calculate the average
     @param lambda: exponent that determines the rate of decay of the weighting
 
+    TO DO: 
     @return an array of moving averages for indices window ~ n
         (indices 0 ~ window cannot be computed; assigned NULL)
 */
