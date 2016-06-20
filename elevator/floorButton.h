@@ -7,7 +7,7 @@ class Elevator;
 
 class FloorButton {
  public:
-  FloorButton(int, Elevator &);
+  FloorButton(const int, Elevator &);
   ~FloorButton();
 
   void pressButton();

@@ -8,7 +8,7 @@ class Bell {
   Bell();
   ~Bell();
   
-  void ringBell();
+  void ringBell() const;
 };
 
 #endif

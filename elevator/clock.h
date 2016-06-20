@@ -9,7 +9,7 @@ class Clock {
   ~Clock();
   
   void tick();
-  int getTime();
+  int getTime() const;
 
  private:
   int time;

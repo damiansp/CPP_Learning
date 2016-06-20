@@ -3,7 +3,12 @@
 #ifndef ELEVATOR_H
 #define ELEVATOR_H
 
+#include "elevatorButton.h"
+#include "door.h"
+#include "bell.h"
+
 class Floor;
+class Person;
 
 class Elevator {
  public:
@@ -11,19 +16,33 @@ class Elevator {
   ~Elevator();
 
   void summonElevator(int floor);
-  void prepareToLeave();
+  void prepareToLeave(bool);
   void processTime(int time);
-  void passengerEnters();
+  void passengerEnters(Person * const);
   void passengerExits();
+  ElevatorButon elevatorButton;
 
  private:
-  bool moving;
-  int direction,
+  static const int ELEVATOR_TRAVEL_TIME; // time to move between floors
+  static const int UP;
+  static const int DOWN;
+  int currentBuildingClockTime,
+    direction,
     currentFloor,
     arrivalTime; // at next floor
+  bool moving,
+    floor1NeedsService,
+    floor2NeedsService;
+  Floor &floor1Ref,
+    &floor2Ref;
+  Person *passengerPtr;
+  Door door;
+  Bell bell;
 
-  Floor &floor1Ref;
-  Floor &floor2Ref;
+  void processPossibleArrival();
+  void processPossibleDeparture();
+  void arrivalAtFloor(Floor &);
+  void move();
 };
 
 #endif

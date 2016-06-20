@@ -5,7 +5,7 @@
 
 class Light {
  public:
-  Light(char *);
+  Light(const char *);
   ~Light();
 
   void turnOn();
@@ -13,7 +13,7 @@ class Light {
 
  private:
   bool on;
-  char *name;
+  const char *name;
 };
 
 #endif

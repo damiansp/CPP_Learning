@@ -3,15 +3,23 @@
 #ifndef BUILDING_H
 #define BUILDING_H
 
+#include "elevator.h"
+#include "floor.h"
+#include "clock.h"
+#include "scheduler.h"
+
 class Building {
  public:
   Building();
   ~Building();
 
-  void runSimulator(int runTime);
+  void runSimulation(int runTime);
 
  private:
-  // TO DO: inlcude other objects: clock, scheduler, elevator, floor...
+  Floor floor1, floor2;
+  Elevator elevator;
+  Clock clock;
+  Scheduler scheduler;
 };
 
-#endif BUILDING_H
+#endif

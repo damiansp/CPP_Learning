@@ -13,11 +13,20 @@ class Scheduler {
 
  private:
   // schedule arrivals to a specified floor
-  void scheduleTime(Floor &);
+  void scheduleTime(const Floor &);
+
+  // delay arrival to a floor
+  void delayTime(const Floor &);
+
+  // handle person's arrival on a floor
+  void handleArrivals(Floor &, int);
+
+  
 
   Floor &floor1Ref;
   Floor &floor2Ref;
-  int floor1ArrivalTime,
+  int currentClockTime,
+    floor1ArrivalTime,
     floor2ArrivalTime;
 };
 
