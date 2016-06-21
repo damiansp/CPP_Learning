@@ -18,6 +18,9 @@ class Scheduler {
   // delay arrival to a floor
   void delayTime(const Floor &);
 
+  // create new person, place on floor
+  void createNewPerson(Floor &);
+  
   // handle person's arrival on a floor
   void handleArrivals(Floor &, int);
 

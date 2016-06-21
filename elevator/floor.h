@@ -3,22 +3,41 @@
 #ifndef FLOOR_H
 #define FLOOR_H
 
+#include "floorButton.h"
+#include "light.h"
+
 class Elevator;
+class Person;
 
 class Floor {
  public:
+  static const int FLOOR1;
+  static const int FLOOR2;
+  FloorButton floorButton;
+  
   Floor(int, Elevator &);
   ~Floor();
 
-  bool isOccupied();
-  int getNumber(); // floor's number
-  void personArrives();
-  void elevatorArrived();
+  bool isOccupied() const;
+  int getNumber() const; // floor's number
+
+  // pass handle to new person coming on floor
+  void personArrives(Person * const);
+
+  // notify floor elevator has arrived
+  Person *elevatorArrived();
+
+  // notifly floor elevator leaving
   void elevatorLeaving();
 
+  // notify floor person is leaving floor
+  void personBoardingElevator();
+
  private:
-  int floorNumber;
+  const int floorNumber;
   Elevator &elevatorRef;
+  Person *occupantPtr;
+  Light light;
 };
 
 #endif 

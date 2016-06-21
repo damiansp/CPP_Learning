@@ -12,7 +12,8 @@ using std::endl;
 Building::Building()
   : floor1(Floor::FLOOR1, elevator),
     floor2(Floor::FLOOR2, elevator),
-    elevator(floor1, floor2) {
+    elevator(floor1, floor2),
+    scheduler(floor1, floor2) {
 
   cout << "building created" << endl;
 }

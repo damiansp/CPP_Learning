@@ -20,7 +20,7 @@ class Elevator {
   void processTime(int time);
   void passengerEnters(Person * const);
   void passengerExits();
-  ElevatorButon elevatorButton;
+  ElevatorButton elevatorButton;
 
  private:
   static const int ELEVATOR_TRAVEL_TIME; // time to move between floors
@@ -41,7 +41,7 @@ class Elevator {
 
   void processPossibleArrival();
   void processPossibleDeparture();
-  void arrivalAtFloor(Floor &);
+  void arriveAtFloor(Floor &);
   void move();
 };
 
