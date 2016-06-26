@@ -52,7 +52,7 @@ ostream& operator<<(ostream& output, const Date& d) {
     "", "January", "February", "March", "April", "May", "June", "July",
     "August", "September", "October", "November", "December" };
 
-  output << d.day << monthName[d.month] << ' ' << d.year;
+  output << d.day << ' ' << monthName[d.month] << ' ' << d.year;
 
   return output;
 }
