@@ -3,10 +3,10 @@
 #ifndef BUILDING_H
 #define BUILDING_H
 
-#include "elevator.h"
-#include "floor.h"
-#include "clock.h"
-#include "scheduler.h"
+#include "elevator.hpp"
+#include "floor.hpp"
+#include "clock.hpp"
+#include "scheduler.hpp"
 
 class Building {
  public:

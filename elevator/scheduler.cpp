@@ -7,9 +7,9 @@ using std::endl;
 #include <cstdlib>
 #include <ctime>
 
-#include "scheduler.h"
-#include "floor.h"
-#include "person.h"
+#include "scheduler.hpp"
+#include "floor.hpp"
+#include "person.hpp"
 
 // Constructor
 Scheduler::Scheduler(Floor &firstFloor, Floor &secondFloor)

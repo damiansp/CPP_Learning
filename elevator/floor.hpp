@@ -3,8 +3,8 @@
 #ifndef FLOOR_H
 #define FLOOR_H
 
-#include "floorButton.h"
-#include "light.h"
+#include "floorButton.hpp"
+#include "light.hpp"
 
 class Elevator;
 class Person;

@@ -1,11 +1,11 @@
-/* elevator.h */
+/* elevator.hpp */
 // Elevator class def
 #ifndef ELEVATOR_H
 #define ELEVATOR_H
 
-#include "elevatorButton.h"
-#include "door.h"
-#include "bell.h"
+#include "elevatorButton.hpp"
+#include "door.hpp"
+#include "bell.hpp"
 
 class Floor;
 class Person;

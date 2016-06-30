@@ -4,10 +4,10 @@
 using std::cout;
 using std::endl;
 
-#include "door.h"
-#include "person.h"
-#include "floor.h"
-#include "elevator.h"
+#include "door.hpp"
+#include "person.hpp"
+#include "floor.hpp"
+#include "elevator.hpp"
 
 // Constructor
 Door::Door()

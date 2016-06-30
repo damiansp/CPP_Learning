@@ -4,9 +4,9 @@
 using std::cout;
 using std::endl;
 
-#include "floor.h"
-#include "person.h"
-#include "elevator.h"
+#include "floor.hpp"
+#include "person.hpp"
+#include "elevator.hpp"
 
 const int Floor::FLOOR1 = 1;
 const int Floor::FLOOR2 = 2;

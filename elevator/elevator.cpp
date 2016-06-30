@@ -4,9 +4,9 @@
 using std::cout;
 using std::endl;
 
-#include "elevator.h"
-#include "person.h"
-#include "floor.h"
+#include "elevator.hpp"
+#include "person.hpp"
+#include "floor.hpp"
 
 const int Elevator::ELEVATOR_TRAVEL_TIME = 5;
 const int Elevator::UP = 0;

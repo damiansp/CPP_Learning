@@ -4,7 +4,7 @@
 using std::cout;
 using std::endl;
 
-#include "bell.h"
+#include "bell.hpp"
 
 // Constructor
 Bell::Bell() { cout << "bell created" << endl; }

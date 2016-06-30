@@ -4,9 +4,9 @@
 using std::cout;
 using std::endl;
 
-#include "person.h"
-#include "floor.h"
-#include "elevator.h"
+#include "person.hpp"
+#include "floor.hpp"
+#include "elevator.hpp"
 
 // init static member personCount
 int Person::personCount = 0;

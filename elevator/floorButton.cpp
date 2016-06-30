@@ -4,12 +4,12 @@
 using std::cout;
 using std::endl;
 
-#include "floorButton.h"
-#include "elevator.h"
+#include "floorButton.hpp"
+#include "elevator.hpp"
 
 // Constructor
-FloorButton::FloorButton(const int number, Elevator &elevatorHandle)
-  : floorNumber(number), pressed(false), elevatorRef(elevatorHandle) {
+FloorButton::FloorButton(int number, Elevator &elevatorHandle)
+  : Button(elevatorHandle), floorNumber(number) {
 
   cout << "floor " << floorNumber << " button created" << endl;
 }
@@ -22,10 +22,6 @@ FloorButton::~FloorButton() {
 
 // press button
 void FloorButton::pressButton() {
-  pressed = true;
   cout << "floor " << floorNumber << " button summons elevator" << endl;
   elevatorRef.summonElevator(floorNumber);
 }
-
-// reset button
-void FloorButton::resetButton() { pressed = false; }

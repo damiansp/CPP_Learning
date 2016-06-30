@@ -4,7 +4,7 @@
 using std::cout;
 using std::endl;
 
-#include "clock.h"
+#include "clock.hpp"
 
 // Constructor
 Clock::Clock()

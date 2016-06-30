@@ -4,7 +4,7 @@
 using std::cout;
 using std::endl;
 
-#include "light.h"
+#include "light.hpp"
 
 // Constructor
 Light::Light(const char *string)
