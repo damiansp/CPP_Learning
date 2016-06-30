@@ -15,19 +15,19 @@ using std::setprecision;
 
 class Circle : public Point { // Inherits from Point
   friend ostream& operator<<(ostream&, const Circle&);
-
- public:
+  
+public:
   // Constructor
   Circle(double r = 0.0, int x = 0, int y = 0);
-
+  
   // Accessors
   void setRadius(double);
   double getRadius() const;
-
+  
   // Other
   double area() const;
-
- protected:
+  
+protected:
   double radius; // x, y inherited through Point
 };
 
