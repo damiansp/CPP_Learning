@@ -18,7 +18,17 @@ public:
 
 private:
   NODETYPE data;
-  ListNode<NODETYPE>* nexPtr; // next node in the list
+  ListNode<NODETYPE>* nextPtr; // next node in the list
 };
+
+// Constr
+template<class NODETYPE>
+ListNode<NODETYPE>::ListNode(const NODETYPE& info)
+  : data(info), nextPtr(0) {}
+
+// Acc
+// Return a copy of the data in the node
+template<class NODETYPE>
+NODETYPE ListNode<NODETYPE>::getData() const { return data; }
 
 #endif
