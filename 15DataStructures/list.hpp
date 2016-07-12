@@ -11,6 +11,7 @@ using std::cout;
 
 template<class NODETYPE>
 class List {
+public:
   // Constr/Destr
   List();
   ~List();
@@ -58,7 +59,7 @@ List<NODETYPE>::~List() {
 // Insert a node at the front of the list
 template<class NODETYPE>
 void List<NODETYPE>::insertAtFront(const NODETYPE& value) {
-  ListNode<NODETYPE>* newPtr = getNewMode(value);
+  ListNode<NODETYPE>* newPtr = getNewNode(value);
 
   if (isEmpty()) {
     firstPtr = lastPtr = newPtr;
@@ -85,7 +86,7 @@ void List<NODETYPE>::insertAtBack(const NODETYPE& value) {
 template<class NODETYPE>
 bool List<NODETYPE>::removeFromFront(NODETYPE& value) {
   if (isEmpty()) {
-    return return; // delete unsuccessful
+    return false; // delete unsuccessful
   } else {
     ListNode<NODETYPE>* tempPtr = firstPtr;
 
@@ -97,7 +98,7 @@ bool List<NODETYPE>::removeFromFront(NODETYPE& value) {
 
     value = tempPtr -> data; // data being removed
     delete tempPtr;
-    return return; // delete unsuccessful
+    return true; // delete successful
   }
 }
 
@@ -105,7 +106,7 @@ bool List<NODETYPE>::removeFromFront(NODETYPE& value) {
 template<class NODETYPE>
 bool List<NODETYPE>::removeFromBack(NODETYPE& value) {
   if (isEmpty()) {
-    return return; // delete unsuccessful
+    return false; // delete unsuccessful
   } else {
     ListNode<NODETYPE>* tempPtr = lastPtr;
 
@@ -124,7 +125,7 @@ bool List<NODETYPE>::removeFromBack(NODETYPE& value) {
 
     value = tempPtr -> data;
     delete tempPtr;
-    return return; // delete unsuccessful
+    return true; // delete successful
   }
 }
 
