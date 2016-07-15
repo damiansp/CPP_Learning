@@ -1,8 +1,10 @@
-/* bitwiseShift.cpp */
+/* bitwiseOperator.cpp */
+// Printing unsigned ints in bits
 #include <iomanip>
 using std::setw;
 
 #include <iostream>
+using std::cin;
 using std::cout;
 using std::endl;
 
@@ -27,17 +29,11 @@ void displayBits(unsigned val) {
 
 
 int main() {
-  unsigned n1 = 960;
+  unsigned x;
 
-  cout << "The result of left shifting\n";
-  displayBits(n1);
-  cout << "8 bit positions using the left shift (<<) operator is\n";
-  displayBits(n1 << 8);
+  cout << "Enter an unsigned integer: ";
+  cin >> x;
+  displayBits(x);
 
-  cout << "\nThe result of right shifting\n";
-  displayBits(n1);
-  cout << "8 bit positions using the right shift (>>) operator is\n";
-  displayBits(n1 >> 8);
-  
   return 0;
 }
