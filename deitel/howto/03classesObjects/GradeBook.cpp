@@ -9,9 +9,15 @@ using std::getline;
 
 
 class GradeBook {
+private:
+  string courseName;
+  
 public:
-  void displayMessage(string courseName) {
-    cout << "Welcome to the Grade Book for\n" << courseName << "!" << endl;
+  void setCourseName(string name) { courseName = name; }
+  string getCourseName() { return courseName; }
+  
+  void displayMessage() {
+    cout << "Welcome to the Grade Book for\n" << getCourseName() << "!" << endl;
   }
 };
 
@@ -22,6 +28,8 @@ int main() {
 
   cout << "Name of course: " << endl;
   getline(cin, courseName);
-  myGradeBook.displayMessage(courseName);
+  myGradeBook.setCourseName(courseName);
+  cout << endl;
+  myGradeBook.displayMessage();
   return 0;
 }
