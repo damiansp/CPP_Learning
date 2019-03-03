@@ -1,11 +1,9 @@
 #include <iostream>
 using std::cout;
-using std::cin;
 using std::endl;
 
 #include <string>
 using std::string;
-using std::getline;
 
 
 class GradeBook {
@@ -13,6 +11,7 @@ private:
   string courseName;
   
 public:
+  GradeBook(string name) { setCourseName(name); }
   void setCourseName(string name) { courseName = name; }
   string getCourseName() { return courseName; }
   
@@ -23,13 +22,10 @@ public:
 
 
 int main() {
-  string courseName;
-  GradeBook myGradeBook;
+  GradeBook gb1("CS101 Python Programming");
+  GradeBook gb2("CS102 Data Structures");
 
-  cout << "Name of course: " << endl;
-  getline(cin, courseName);
-  myGradeBook.setCourseName(courseName);
-  cout << endl;
-  myGradeBook.displayMessage();
+  cout << "gb1 created for: " << gb1.getCourseName()
+       << "\ngb2 created for: " << gb2.getCourseName() << endl;
   return 0;
 }
