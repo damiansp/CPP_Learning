@@ -6,7 +6,7 @@ using std::endl;
 
 
 int main() {
-  GradeBook gb1("CS101: Intro to Python Programming");
+  GradeBook gb1("CS101: Introduction to Python Programming");
   GradeBook gb2("CS102: Data Structures");
 
   cout << "GradeBook 1 created for course: " << gb1.getCourseName()
