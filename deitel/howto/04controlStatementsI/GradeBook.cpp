@@ -1,7 +1,11 @@
 #include <iostream>
-using std::cout;
 using std::cin;
+using std::cout;
 using std::endl;
+using std::fixed;
+
+#include <iomanip>
+using std::setprecision;
 
 #include "GradeBook.h"
 
@@ -31,18 +35,21 @@ void GradeBook::displayMessage() {
 
 void GradeBook::determineClassAverage() {
   int total = 0;
-  int gradeCounter = 1;
+  int gradeCounter = 0;
   int grade;
-  int average;
+  double average;
 
-  while (gradeCounter <= 10) {
-    cout << "Enter grade: ";
-    cin >> grade;
+  cout << "Enter grade (-1 to quit): ";
+  cin >> grade;
+  while (grade != -1) {
     total += grade;
     gradeCounter++;
+    cout << "Next grade (-1 to quit): ";
+    cin >> grade;
   }
-
-  average = total / 10;
-  cout << "\nTotal of all 10 grades is " << total << endl;
-  cout << "Average: " << average << endl;
+  if (gradeCounter > 0) {
+    average = static_cast<double>(total) / gradeCounter;
+    cout << "\nTotal of all 10 grades is " << total << endl;
+    cout << "Average: " << average << endl;
+  } else { cout << "No grades entered." << endl; }
 }
