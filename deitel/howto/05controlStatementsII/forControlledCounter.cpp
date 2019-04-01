@@ -4,11 +4,7 @@ using std::endl;
 
 
 int main() {
-  int counter = 0;
-
-  while (++counter <= 10) {
-    cout << counter << " ";
-  }
+  for (int i = 1; i <= 10; i++) { cout << i << " "; }
   cout << endl;
   return 0;
 }
