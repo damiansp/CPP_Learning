@@ -9,7 +9,7 @@ using std::endl;
 namespace my {
   Cube::Cube() {
     length_ = 1;
-    cout << "Default constructor invoked" << endl;
+    cout << "Default constructor invoked: $" << getVolume() << endl;
   }
 
   Cube::Cube(double length) {
@@ -20,12 +20,14 @@ namespace my {
   // copy constr: (same as would-be default copy constr)
   Cube::Cube(const Cube &obj) {
     length_ = obj.length_;
-    cout << "Copy constructor invoked" << endl;
+    cout << "Copy constructor invoked: $" << getVolume() << endl;
   }
 
   Cube & Cube::operator=(const Cube &obj) {
     length_ = obj.length_;
     cout << "Assignment operator invoked" << endl;
+    cout << "Transformed $" << getVolume() << "-> $" <<  getVolume()
+         << endl;
     return *this;
   }
 
