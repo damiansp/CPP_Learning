@@ -27,6 +27,19 @@ bool passByPointer(Cube *c) {
 }
 
 
+double cubeOnStack() {
+  Cube c(3);
+  return c.getVolume();
+}
+
+
+void cubeOnHeap() {
+  Cube* c1 = new Cube(10);
+  Cube* c2 = new Cube;
+  delete c1;
+}
+
+
 int main() {
   Cube c(10);             // create with val $1k
   Cube copyCube = c;      // transfer
@@ -36,5 +49,9 @@ int main() {
   passByValue(c);
   passByReference(c);
   passByPointer(&c);
+
+  cubeOnStack();
+  cubeOnHeap();
+  cubeOnStack();
   return 0;
 }

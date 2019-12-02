@@ -7,7 +7,7 @@ namespace my {
     Cube();
     Cube(double length);
     Cube(const Cube & obj);
-
+    ~Cube();
     Cube& operator=(const Cube &obj);
     double getVolume();
     double getSurfaceArea();

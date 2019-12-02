@@ -23,6 +23,9 @@ namespace my {
     cout << "Copy constructor invoked: $" << getVolume() << endl;
   }
 
+  // Destructor
+  Cube::~Cube() { cout << "Destroyed $" << getVolume() << endl; }
+
   Cube & Cube::operator=(const Cube &obj) {
     length_ = obj.length_;
     cout << "Assignment operator invoked" << endl;
