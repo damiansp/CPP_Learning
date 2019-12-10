@@ -18,3 +18,22 @@ Game::Game() {
   stacks_[0].pushBack(purple);
   stacks_[0].pushBack(yellow);
 }
+
+
+void Game::_move(
+    unsigned start, unsigned end, Stack &source, Stack &target, Stack &spare,
+    unsigned depth) {
+  //cout << "Planning (depth=" << depth++ << "): Move [" << /* ... */
+
+  // Check if moving only 1 cube
+  if (start == end) {
+    // if so, move it directly
+    _moveCube(source, target);
+    cout << *this << endl;
+  } else {
+    // Use move strategy
+    _move(start + 1, end  , source, spare , target, depth);
+    _move(start    , start, source, target, spare , depth);
+    _move(start + 1, end  , spare , target, source, depth);
+  }
+}
