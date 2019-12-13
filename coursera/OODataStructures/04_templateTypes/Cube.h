@@ -1,5 +1,10 @@
+#pragma once
+
+#include "Shape.h"
+
+
 namespace dsp {
-  class Cube {
+  class Cube: public Shape {
   public:
     Cube(double length, char color);
     double getLength() const;
