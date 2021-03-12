@@ -25,12 +25,20 @@ public:
 };
 
 
+void addYearExt(Clock& clock) {
+  clock.setYear(clock.getYear() + 1);
+}
+
+
 int main() {
   Clock clock;
   Clock* clockPtr = &clock;
 
   clockPtr->setYear(2021);
   printf("Address of clock: %p\n", clockPtr);
+  printf("Clock year: %d\n", clockPtr->getYear());
+  printf("Add year externally...\n");
+  addYearExt(clock); // passed by ref
   printf("Clock year: %d\n", clockPtr->getYear());
   return 0;
 }
