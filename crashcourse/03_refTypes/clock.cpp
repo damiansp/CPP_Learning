@@ -21,12 +21,24 @@ public:
     return true;
   }
 
-  int getYear() { return year; }  
+  // a const function must not alter an objects state (like python
+  // @staticmethod)
+  int getYear() const { return year; }
 };
 
 
 void addYearExt(Clock& clock) {
   clock.setYear(clock.getYear() + 1);
+}
+
+
+// using const here promises not to alter Clock, allowing access to Clock's
+// const methods
+bool isLeapYear(const Clock& clock) {
+  int year = clock.getYear();
+  if (year % 4 > 0) return false;
+  if (year % 100 > 0) return true;
+  if (year % 400 > 0) return false;
 }
 
 
