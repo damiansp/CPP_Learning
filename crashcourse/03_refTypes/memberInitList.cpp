@@ -42,15 +42,24 @@ bool isLeapYear(const Clock& clock) {
 }
 
 
-int main() {
-  Clock clock;
-  Clock* clockPtr = &clock;
+struct Avout {
+  const char* name;
+  Clock apert;
 
-  clockPtr->setYear(2021);
-  printf("Address of clock: %p\n", clockPtr);
-  printf("Clock year: %d\n", clockPtr->getYear());
-  printf("Add year externally...\n");
-  addYearExt(clock); // passed by ref
-  printf("Clock year: %d\n", clockPtr->getYear());
-  return 0;
+  Avout(const char* name, int apertYear)
+    // this.name = name; this.apertYear = apert
+    : name {name}, apert {apertYear} { 
+  }
+  
+  void announce() const {
+    printf("My name is %s and my next apert is %d.\n", name, apert.getYear());
+  }
+};
+
+
+int main() {
+  Avout raz{"Erasmus", 3010};
+  Avout jad{"Jad", 4000};
+  raz.announce();
+  jad.announce();
 }

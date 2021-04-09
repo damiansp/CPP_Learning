@@ -42,6 +42,18 @@ bool isLeapYear(const Clock& clock) {
 }
 
 
+struct Avout {
+  const char* name = "Erasmus"; // the pointed-to val cannot be changed
+  Clock apert;
+};
+
+
+/*
+void doesNotCompile(const Avout& avout) {
+  avout.apert.addYear(); // Compiler err; avout is const
+}
+*/
+
 int main() {
   Clock clock;
   Clock* clockPtr = &clock;
