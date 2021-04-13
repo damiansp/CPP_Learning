@@ -8,7 +8,6 @@ using namespace std;
 
 int main() {
   string zipFileName;
-
   cout << "Enter name of zip file: ";
   getline(cin, zipFileName);
 
@@ -23,5 +22,19 @@ int main() {
     "enhancements that allow you to initialize one or more variables of the same "
     "type in the headers of if and switch statements."};
   cout << "\ncontent.length(): " << content.length();
+
+  miniz_cpp::zip_file output;
+  output.writestr("intro.txt", content);
+  output.save(zipFileName);
+
+  miniz_cpp::zip_file input{zipFileName};
+  cout << "\n\nZip file's name: " << input.get_filename()
+       << "\n\nZip file's directory listing:\n";
+  input.printdir();
+
+  miniz_cpp::zip_info info{input.getinfo("intro.txt")};
+  cout << "\nFile name: " << info.filename
+       << "\nOriginal size: " << info.file_size
+       << "\nCompressed size: " << info.compress_size;
   return 0;
 }
