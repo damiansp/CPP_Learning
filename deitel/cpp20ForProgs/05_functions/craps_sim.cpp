@@ -1,6 +1,8 @@
 #include <cstdlib>
 #include <ctime>
+#include <iomanip>
 #include <iostream>
+#include <random>
 #include "gsl/gls"
 using namespace std;
 
